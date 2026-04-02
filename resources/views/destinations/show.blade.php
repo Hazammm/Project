@@ -37,10 +37,10 @@
                 <div style="flex: 1; min-width: 60%;" data-aos="fade-up">
                     
                     @if($destination->gallery && count($destination->gallery) > 0)
-                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-bottom: 40px;">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px;">
                             @foreach($destination->gallery as $index => $img)
-                                <a href="{{ asset($img) }}" data-lightbox="destination-gallery" data-title="{{ $destination->name }} - Image {{ $index + 1 }}" style="display: block; height: 150px; border-radius: 8px; overflow: hidden;">
-                                    <img src="{{ asset($img) }}" alt="Gallery Image" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                <a href="{{ asset($img) }}" data-lightbox="destination-gallery" data-title="{{ $destination->name }} - Photo {{ $index + 1 }}" style="display: block; height: 200px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                    <img src="{{ asset($img) }}" alt="{{ $destination->name }} - Photo {{ $index + 1 }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
                                 </a>
                             @endforeach
                         </div>
@@ -58,6 +58,86 @@
                             </h3>
                             <div style="line-height: 1.7; color: var(--gray-500);">
                                 {!! nl2br(e($destination->travel_tips)) !!}
+                            </div>
+                        </div>
+                    @endif
+
+                    {{-- ── Famous Dishes ─────────────────────────────── --}}
+                    @if($destination->food_dishes && count($destination->food_dishes) > 0)
+                        <div style="margin-bottom: 40px;">
+                            <h2 style="font-size: 26px; margin-bottom: 8px; color: var(--navy); display: flex; align-items: center; gap: 12px;">
+                                <i class="fa-solid fa-utensils" style="color: var(--coral);"></i> Famous Dishes
+                            </h2>
+                            <p style="color: var(--gray-500); margin-bottom: 24px;">Must-try local delicacies you can't leave without tasting.</p>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px;">
+                                @foreach($destination->food_dishes as $dish)
+                                    <div style="background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'">
+                                        @if(!empty($dish['image']) && file_exists(public_path($dish['image'])))
+                                            <div style="height: 180px; overflow: hidden;">
+                                                <img src="{{ asset($dish['image']) }}" alt="{{ $dish['name'] }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                        @else
+                                            <div style="height: 180px; background: linear-gradient(135deg, var(--coral), var(--amber)); display: flex; justify-content: center; align-items: center;">
+                                                <i class="fa-solid fa-bowl-food" style="font-size: 48px; color: rgba(255,255,255,0.8);"></i>
+                                            </div>
+                                        @endif
+                                        <div style="padding: 18px;">
+                                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                                                <h4 style="font-size: 17px; font-weight: 700; color: var(--navy); margin: 0;">{{ $dish['name'] }}</h4>
+                                                @if(!empty($dish['price_range']))
+                                                    <span style="font-size: 12px; background: rgba(255,107,107,0.1); color: var(--coral); padding: 3px 10px; border-radius: 20px; white-space: nowrap; margin-left: 8px;">{{ $dish['price_range'] }}</span>
+                                                @endif
+                                            </div>
+                                            <p style="font-size: 14px; color: var(--gray-500); line-height: 1.6; margin: 0;">{{ $dish['description'] }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
+                    {{-- ── Recommended Restaurants ───────────────────── --}}
+                    @if($destination->restaurants && count($destination->restaurants) > 0)
+                        <div style="margin-bottom: 40px;">
+                            <h2 style="font-size: 26px; margin-bottom: 8px; color: var(--navy); display: flex; align-items: center; gap: 12px;">
+                                <i class="fa-solid fa-star" style="color: var(--amber);"></i> Recommended Restaurants
+                            </h2>
+                            <p style="color: var(--gray-500); margin-bottom: 24px;">Curated picks from street stalls to fine dining.</p>
+                            <div style="display: flex; flex-direction: column; gap: 16px;">
+                                @foreach($destination->restaurants as $restaurant)
+                                    <div style="background: var(--white); border-radius: 16px; padding: 24px; box-shadow: 0 5px 20px rgba(0,0,0,0.06); border: 1px solid var(--gray-200); display: flex; align-items: flex-start; gap: 20px; transition: transform 0.2s;" onmouseover="this.style.transform='translateX(4px)'" onmouseout="this.style.transform='translateX(0)'">
+                                        <div style="width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, var(--coral), #ff8c42); display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
+                                            <i class="fa-solid fa-fork-knife" style="color: white; font-size: 20px;"></i>
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                                                <div>
+                                                    <h4 style="font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 4px;">{{ $restaurant['name'] }}</h4>
+                                                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                                        @if(!empty($restaurant['cuisine']))
+                                                            <span style="font-size: 12px; color: var(--teal); font-weight: 600;"><i class="fa-solid fa-tag"></i> {{ $restaurant['cuisine'] }}</span>
+                                                        @endif
+                                                        @if(!empty($restaurant['price_range']))
+                                                            <span style="font-size: 13px; color: var(--gray-500);">{{ $restaurant['price_range'] }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                @if(!empty($restaurant['rating']))
+                                                    <div style="display: flex; align-items: center; gap: 4px; background: rgba(244,162,97,0.12); padding: 6px 14px; border-radius: 20px;">
+                                                        <i class="fa-solid fa-star" style="color: var(--amber); font-size: 13px;"></i>
+                                                        <span style="font-weight: 700; color: var(--navy); font-size: 15px;">{{ $restaurant['rating'] }}</span>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <p style="font-size: 14px; color: var(--gray-500); line-height: 1.6; margin: 10px 0 0;">{{ $restaurant['description'] }}</p>
+                                            @if(!empty($restaurant['address']))
+                                                <div style="margin-top: 10px; font-size: 13px; color: var(--gray-400);">
+                                                    <i class="fa-solid fa-location-dot" style="color: var(--coral);"></i> {{ $restaurant['address'] }}
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     @endif
