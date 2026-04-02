@@ -22,6 +22,8 @@ class Destination extends Model
         'longitude',
         'hero_image',
         'gallery',
+        'food_dishes',
+        'restaurants',
         'best_time',
         'budget',
         'language',
@@ -36,6 +38,8 @@ class Destination extends Model
 
     protected $casts = [
         'gallery' => 'array',
+        'food_dishes' => 'array',
+        'restaurants' => 'array',
         'is_featured' => 'boolean',
         'is_hidden_gem' => 'boolean',
         'latitude' => 'decimal:7',
