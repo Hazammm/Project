@@ -107,7 +107,7 @@
                                 @foreach($destination->restaurants as $restaurant)
                                     <div style="background: var(--white); border-radius: 16px; padding: 24px; box-shadow: 0 5px 20px rgba(0,0,0,0.06); border: 1px solid var(--gray-200); display: flex; align-items: flex-start; gap: 20px; transition: transform 0.2s;" onmouseover="this.style.transform='translateX(4px)'" onmouseout="this.style.transform='translateX(0)'">
                                         <div style="width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, var(--coral), #ff8c42); display: flex; justify-content: center; align-items: center; flex-shrink: 0;">
-                                            <i class="fa-solid fa-fork-knife" style="color: white; font-size: 20px;"></i>
+                                            <i class="fa-solid fa-utensils" style="color: white; font-size: 20px;"></i>
                                         </div>
                                         <div style="flex: 1;">
                                             <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
@@ -232,6 +232,7 @@
 @endsection
 
 @section('scripts')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     
     @if($destination->latitude && $destination->longitude)
