@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/newsletter', static function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+    \Illuminate\Support\Facades\Mail::to($request->email)->send(new \App\Mail\NewsletterSubscribed());
+    return response()->json(['success' => true]);
+});

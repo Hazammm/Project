@@ -30,7 +30,7 @@
             
             <div data-aos="fade-up" data-aos-delay="200" style="max-width: 600px; margin: 0 auto; position: relative;">
                 <form action="{{ route('destinations.index') }}" method="GET" style="display: flex; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 8px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2);">
-                    <input type="text" name="search" placeholder="Search destinations, activities, experiences..." style="flex: 1; background: transparent; border: none; padding: 10px 20px; color: var(--white); font-size: 16px; outline: none;">
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search destinations, activities, experiences..." style="flex: 1; background: transparent; border: none; padding: 10px 20px; color: var(--white); font-size: 16px; outline: none;">
                     <button type="submit" class="btn btn-primary" style="padding: 12px 30px; font-size: 16px;">Explore Now</button>
                 </form>
             </div>

@@ -131,4 +131,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         });
     }
+
+    // 5. Mobile Menu Toggle
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileBtn && navLinks) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // 6. Newsletter Form
+    const newsletterForm = document.querySelector('.footer form');
+    if (newsletterForm) {
+        const btn = newsletterForm.querySelector('button');
+        if (btn) btn.type = 'submit';
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            const email = emailInput ? emailInput.value : '';
+            if(!email) return;
+
+            fetch('/api/newsletter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            }).then(() => {
+                alert('Thanks for subscribing to Wonderlust Guides! Check your email.');
+                newsletterForm.reset();
+            }).catch(error => {
+                alert('An error occurred. Please try again later.');
+            });
+        });
+    }
 });
