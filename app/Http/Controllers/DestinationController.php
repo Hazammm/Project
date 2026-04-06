@@ -20,7 +20,23 @@ class DestinationController extends Controller
             $query->search($request->search);
         }
 
-        $destinations = $query->latest()->paginate(12);
+        if ($request->has('budget') && $request->budget) {
+            $query->where('budget', $request->budget);
+        }
+
+        if ($request->has('sort') && $request->sort) {
+            if ($request->sort === 'rating_desc') {
+                $query->orderBy('rating', 'desc');
+            } elseif ($request->sort === 'name_asc') {
+                $query->orderBy('name', 'asc');
+            } else {
+                 $query->latest();
+            }
+        } else {
+            $query->latest();
+        }
+
+        $destinations = $query->paginate(12);
         $categories = Category::withCount('destinations')->get();
 
         if ($request->ajax()) {
@@ -39,5 +55,15 @@ class DestinationController extends Controller
         $similarDestinations = $destination->similarDestinations(4);
 
         return view('destinations.show', compact('destination', 'similarDestinations'));
+    }
+
+    public function map()
+    {
+        $destinations = Destination::with('category')
+            ->whereNotNull('latitude')
+            ->whereNotNull('longitude')
+            ->get();
+            
+        return view('destinations.map', compact('destinations'));
     }
 }
