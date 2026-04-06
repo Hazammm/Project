@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/destinations', [DestinationController::class, 'index'])->name('destinations.index');
 Route::get('/destinations/{slug}', [DestinationController::class, 'show'])->name('destinations.show');
+Route::get('/map', [DestinationController::class, 'map'])->name('destinations.map');
 Route::get('/hidden-gems', [HiddenGemController::class, 'index'])->name('hidden-gems');
 Route::get('/api/search', [SearchController::class, 'search'])->name('search');
 

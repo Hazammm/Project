@@ -6,7 +6,8 @@
         
         <ul class="nav-links">
             <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
-            <li><a href="{{ route('destinations.index') }}" class="{{ request()->routeIs('destinations.*') ? 'active' : '' }}">Destinations</a></li>
+            <li><a href="{{ route('destinations.index') }}" class="{{ request()->routeIs('destinations.index') || request()->routeIs('destinations.show') ? 'active' : '' }}">Destinations</a></li>
+            <li><a href="{{ route('destinations.map') }}" class="{{ request()->routeIs('destinations.map') ? 'active' : '' }}">Map</a></li>
             <li><a href="{{ route('hidden-gems') }}" class="{{ request()->routeIs('hidden-gems') ? 'active' : '' }}">Hidden Gems</a></li>
         </ul>
         
