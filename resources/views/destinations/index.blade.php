@@ -14,21 +14,37 @@
     <div style="background-color: var(--white); border-bottom: 1px solid var(--gray-200); padding: 20px 0; position: sticky; top: 60px; z-index: 100;">
         <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
             <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px;">
-                <a href="{{ route('destinations.index') }}" class="btn" style="padding: 8px 20px; background: {{ !request('category') || request('category') == 'all' ? 'var(--coral)' : 'var(--gray-200)' }}; color: {{ !request('category') || request('category') == 'all' ? 'var(--white)' : 'var(--navy)' }};">All</a>
+                <a href="{{ request()->fullUrlWithQuery(['category' => 'all']) }}" class="btn" style="padding: 8px 20px; background: {{ !request('category') || request('category') == 'all' ? 'var(--coral)' : 'var(--gray-200)' }}; color: {{ !request('category') || request('category') == 'all' ? 'var(--white)' : 'var(--navy)' }};">All</a>
                 @foreach($categories as $category)
-                    <a href="{{ route('destinations.index', ['category' => $category->slug]) }}" class="btn" style="padding: 8px 20px; background: {{ request('category') == $category->slug ? $category->color : 'var(--gray-200)' }}; color: {{ request('category') == $category->slug ? 'var(--white)' : 'var(--navy)' }};">
+                    <a href="{{ request()->fullUrlWithQuery(['category' => $category->slug]) }}" class="btn" style="padding: 8px 20px; background: {{ request('category') == $category->slug ? $category->color : 'var(--gray-200)' }}; color: {{ request('category') == $category->slug ? 'var(--white)' : 'var(--navy)' }};">
                         {{ $category->name }}
                     </a>
                 @endforeach
             </div>
             
             <div>
-                <form action="{{ route('destinations.index') }}" method="GET" style="position: relative;">
+                <form action="{{ route('destinations.index') }}" method="GET" style="display: flex; gap: 15px; position: relative; flex-wrap: wrap;" id="filter-form">
                     @if(request('category'))
                         <input type="hidden" name="category" value="{{ request('category') }}">
                     @endif
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search..." style="padding: 10px 15px 10px 40px; border: 1px solid var(--gray-300); border-radius: 50px; outline: none; width: 250px;">
-                    <i class="fa-solid fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--gray-400);"></i>
+                    
+                    <select name="budget" style="padding: 10px 15px; border: 1px solid var(--gray-300); border-radius: 50px; outline: none; background: white;" onchange="document.getElementById('filter-form').submit()">
+                        <option value="">Any Budget</option>
+                        <option value="$" {{ request('budget') == '$' ? 'selected' : '' }}>$ (Budget)</option>
+                        <option value="$$" {{ request('budget') == '$$' ? 'selected' : '' }}>$$ (Moderate)</option>
+                        <option value="$$$" {{ request('budget') == '$$$' ? 'selected' : '' }}>$$$ (Luxury)</option>
+                    </select>
+
+                    <select name="sort" style="padding: 10px 15px; border: 1px solid var(--gray-300); border-radius: 50px; outline: none; background: white;" onchange="document.getElementById('filter-form').submit()">
+                        <option value="latest" {{ request('sort') == 'latest' || !request('sort') ? 'selected' : '' }}>Newest</option>
+                        <option value="rating_desc" {{ request('sort') == 'rating_desc' ? 'selected' : '' }}>Top Rated</option>
+                        <option value="name_asc" {{ request('sort') == 'name_asc' ? 'selected' : '' }}>A-Z</option>
+                    </select>
+
+                    <div style="position: relative;">
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search..." style="padding: 10px 15px 10px 40px; border: 1px solid var(--gray-300); border-radius: 50px; outline: none; width: 200px;">
+                        <i class="fa-solid fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--gray-400);"></i>
+                    </div>
                 </form>
             </div>
         </div>
