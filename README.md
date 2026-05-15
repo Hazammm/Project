@@ -15,7 +15,7 @@ Wanderlust Guides is a responsive, feature-rich travel guide application built w
 ## Technologies Used
 
 - **Backend:** Laravel Framework (PHP)
-- **Frontend:** HTML, Vanilla CSS, JS, Blade Templates, Vite
+- **Frontend:** HTML, Vanilla CSS, Java Script, Blade Templates, Vite
 - **Database:** MySQL / SQLite
 
 ## Requirements
