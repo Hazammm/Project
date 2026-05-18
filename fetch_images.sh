@@ -19,7 +19,7 @@ mkdir -p public/images/destinations
 for file in "${!destinations[@]}"; do
     title="${destinations[$file]}"
     echo "Fetching image for $title..."
-    # Get thumbnail source URL from Wikipedia API
+    # Get thumbnail source Uniform Resource Locator (URL) from Wikipedia API
     img_url=$(curl -s -L "https://en.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=1200" | grep -o '"source":"[^"]*"' | head -n 1 | cut -d '"' -f 4)
     if [ -n "$img_url" ] && [ "$img_url" != "null" ]; then
         echo "Found URL: $img_url"
