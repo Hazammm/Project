@@ -74,5 +74,5 @@ This project relies on the Laravel framework and its ecosystem, open-sourced sof
 
 ## Contributors
 
-Hazam Liaqat (Frontend & API'S)<br>
-Asra Arshad (Backend & Database)<br>
+Hazam Liaqat <br>
+Asra Arshad <br>
