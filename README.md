@@ -20,7 +20,7 @@ Wanderlust Guides is a responsive, feature-rich travel guide application built w
 
 ## Requirements
 
-- PHP >= 8.1
+- PHP >= 8.3
 - Composer
 - Node.js & npm
 - MySQL or other supported database
