@@ -1,5 +1,4 @@
-# Railway deployment v2
-FROM php:8.3-apache
+FROM php:8.3-cli
 
 RUN apt-get update && apt-get install -y \
     git curl zip unzip libzip-dev libpng-dev \
@@ -18,10 +17,6 @@ RUN npm install && npm run build
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-RUN a2enmod rewrite
+EXPOSE 8000
 
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
-
-EXPOSE 80
-
-CMD sed -i "s/80/$PORT/g" /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf && php artisan config:clear && php artisan migrate --force && apache2-foreground
+CMD php artisan config:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT
