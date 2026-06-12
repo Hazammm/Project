@@ -17,7 +17,7 @@ A production-ready, full-stack travel guide platform built with **Laravel 10** f
 
 <br/>
 
-[ Live Demo](https://wonderlust.up.railway.app) · [🐛 Report Bug](https://github.com/Hazammm/WonderLust/issues) · [ Request Feature](https://github.com/Hazammm/WonderLust/issues)
+[ Live Demo](https://wonderlust.up.railway.app) · [ Report Bug](https://github.com/Hazammm/WonderLust/issues) · [ Request Feature](https://github.com/Hazammm/WonderLust/issues)
 
 <br/>
 
