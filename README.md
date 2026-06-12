@@ -216,24 +216,6 @@ php artisan serve
 
 ---
 
-## Team
-
-<br/>
-
-<div align="center">
-
-| <img src="https://github.com/Hazammm.png" width="80px" style="border-radius:50%"/> | <img src="https://github.com/asraserver06.png" width="80px" style="border-radius:50%"/> |
-|:---:|:---:|
-| **Hazam Liaqat** | **Asra Arshad** |
-| Machine Learning Engineer | Full-Stack Developer |
-| [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/Hazammm) | [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/asraserver06) |
-
-</div>
-
-<br/>
-
----
-
 ## Acknowledgements
 
 - **Miss Syeda Zarwa** ; Our incredible instructor whose guidance, mentorship, and belief in us made this project possible. You didn't just teach us programming, you taught us how to think like developers.
