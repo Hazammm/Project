@@ -34,7 +34,6 @@ A production-ready, full-stack travel guide platform built with **Laravel 10** f
 - [ Tech Stack](#️-tech-stack)
 - [ Getting Started](#-getting-started)
 - [ Project Structure](#-project-structure)
-- [ Team](#-team)
 - [ Acknowledgements](#-acknowledgements)
 
 <br/>
