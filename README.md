@@ -92,7 +92,7 @@ Built from the ground up as a complete full-stack project ,from database schema 
 
 **Frontend**
 
-![Blade](https://img.shields.io/badge/Blade_Templates-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+![Blade](https://img.shields.io/badge/Blade-FF2D20?style=flat-square&logo=laravel&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
@@ -236,12 +236,12 @@ php artisan serve
 
 ## Acknowledgements
 
-- **Miss Syeda Zarwa** ; Our incredible instructor whose guidance, mentorship, and belief in us made this project possible. You didn't just teach us Laravel — you taught us how to think like developers.
-- [Laravel](https://laravel.com) — The PHP framework for web artisans
-- [Leaflet.js](https://leafletjs.com) — Open-source interactive maps
-- [Swiper.js](https://swiperjs.com) — Modern touch slider
-- [AOS](https://michalsnik.github.io/aos/) — Animate On Scroll library
-- [Railway](https://railway.app) — Deployment platform
+- **Miss Syeda Zarwa** ; Our incredible instructor whose guidance, mentorship, and belief in us made this project possible. You didn't just teach us programming, you taught us how to think like developers.
+- [Laravel](https://laravel.com)  The PHP framework for web artisans
+- [Leaflet.js](https://leafletjs.com)  Open-source interactive maps
+- [Swiper.js](https://swiperjs.com)  Modern touch slider
+- [AOS](https://michalsnik.github.io/aos/)  Animate On Scroll library
+- [Railway](https://railway.app)  Deployment platform
 
 <br/>
 
